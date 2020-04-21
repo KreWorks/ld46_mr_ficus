@@ -2,7 +2,7 @@
 
 public class DeadPlantState : PlantState
 {
-	public DeadPlantState(PlantController plant, Sprite icon) : base(plant, icon)
+	public DeadPlantState(PlantController plant, Sprite icon, Color color) : base(plant, icon, color)
 	{
 
 	}

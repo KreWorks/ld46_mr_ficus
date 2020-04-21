@@ -2,18 +2,18 @@
 
 public class NeutralPlantState : PlantState
 {
-	public NeutralPlantState(PlantController plant, Sprite icon) : base(plant, icon)
+	public NeutralPlantState(PlantController plant, Sprite icon, Color color) : base(plant, icon, color)
 	{
 
 	}
 
 	public override void GetBetter()
 	{
-		this.plant.plantState = this.plant.pleaseState;
+		this.plant.TransitionToState(this.plant.pleaseState);
 	}
 
 	public override void GetWorse()
 	{
-		this.plant.plantState = this.plant.sadState;
+		this.plant.TransitionToState(this.plant.sadState);
 	}
 }

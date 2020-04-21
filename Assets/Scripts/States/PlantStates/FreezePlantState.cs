@@ -2,18 +2,18 @@
 
 public class FreezePlantState : PlantState
 {
-	public FreezePlantState(PlantController plant, Sprite icon) : base(plant, icon)
+	public FreezePlantState(PlantController plant, Sprite icon, Color color) : base(plant, icon, color)
 	{
 
 	}
 
 	public override void GetBetter()
 	{
-		this.plant.plantState = this.plant.neutralState;
+		this.plant.TransitionToState(this.plant.neutralState);
 	}
 
 	public override void GetWorse()
 	{
-		this.plant.plantState = this.plant.tragicState;
+		this.plant.TransitionToState(this.plant.tragicState);
 	}
 }

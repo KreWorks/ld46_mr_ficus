@@ -2,7 +2,7 @@
 
 public class DelightedPlantState : PlantState
 {
-	public DelightedPlantState(PlantController plant, Sprite icon) : base(plant, icon)
+	public DelightedPlantState(PlantController plant, Sprite icon, Color color) : base(plant, icon, color)
 	{
 
 	}
@@ -14,6 +14,6 @@ public class DelightedPlantState : PlantState
 
 	public override void GetWorse()
 	{
-		this.plant.plantState = this.plant.pleaseState;
+		this.plant.TransitionToState(this.plant.pleaseState);
 	}
 }

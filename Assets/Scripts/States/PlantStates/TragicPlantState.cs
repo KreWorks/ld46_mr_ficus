@@ -2,18 +2,18 @@
 
 public class TragicPlantState : PlantState
 {
-	public TragicPlantState(PlantController plant, Sprite icon) : base(plant, icon)
+	public TragicPlantState(PlantController plant, Sprite icon, Color color) : base(plant, icon, color)
 	{
 
 	}
 
 	public override void GetBetter()
 	{
-		this.plant.plantState = this.plant.sadState;
+		this.plant.TransitionToState(this.plant.sadState);
 	}
 
 	public override void GetWorse()
 	{
-		this.plant.plantState = this.plant.deadState;
+		this.plant.TransitionToState(this.plant.deadState);
 	}
 }

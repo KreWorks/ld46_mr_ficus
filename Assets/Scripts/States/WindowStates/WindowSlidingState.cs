@@ -36,6 +36,7 @@ public class WindowSlidingState : WindowState
 			{
 				this.window.transform.position = this.closedPosition;
 				this.window.windowState = this.window.closedWindowState; 
+				this.window.OnWindowSlideHandler?.Invoke();
 			}
 		}
 		//window is opening
@@ -46,6 +47,7 @@ public class WindowSlidingState : WindowState
 			{
 				this.window.transform.position = this.openedPosition;
 				this.window.windowState = this.window.openedWindowState;
+				this.window.OnWindowSlideHandler?.Invoke();
 			}
 		}
 	}

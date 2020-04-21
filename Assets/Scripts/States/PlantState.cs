@@ -3,12 +3,14 @@
 public abstract class PlantState 
 {
 	protected Sprite icon;
+	protected Color color;
 	protected PlantController plant;
 
-	public PlantState(PlantController plant, Sprite icon)
+	public PlantState(PlantController plant, Sprite icon, Color color)
 	{
 		this.icon = icon;
 		this.plant = plant;
+		this.color = color;
 	}
 
 	public abstract void GetBetter();
@@ -21,6 +23,11 @@ public abstract class PlantState
 	public virtual Sprite GetIcon()
 	{
 		return this.icon;
+	}
+
+	public virtual Color GetColor()
+	{
+		return this.color;
 	}
 }
 

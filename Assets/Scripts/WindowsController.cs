@@ -1,10 +1,9 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System;
 using UnityEngine;
 
 public class WindowsController : MonoBehaviour
 {
-	public InputController inputController;
+	public Action OnWindowSlideHandler;
 
 	public WindowState windowState;
 
@@ -12,13 +11,13 @@ public class WindowsController : MonoBehaviour
 	public WindowClosedState closedWindowState;
 	public WindowSlidingState slidingState; 
 
+	public 
+
 	void Start()
 	{
 		openedWindowState = new WindowOpenedState(this);
 		closedWindowState = new WindowClosedState(this);
 		slidingState = new WindowSlidingState(this, 0.001f);
-
-		inputController.AddListenerOnMouseClickedEvent(IsWindowClicked);
 
 		windowState = closedWindowState;
 	}
@@ -27,9 +26,7 @@ public class WindowsController : MonoBehaviour
 	{
 		windowState.Slide();
 		windowState.IsEndState();
-
 	}
-
 
 	public void IsWindowClicked(string tag)
 	{
@@ -44,6 +41,7 @@ public class WindowsController : MonoBehaviour
 		//Allow opening or closing when window isn't moving
 		if (!windowState.IsSliding())
 		{
+			OnWindowSlideHandler?.Invoke();
 			if (windowState.IsOpened())
 			{
 				windowState.Close();
@@ -55,5 +53,12 @@ public class WindowsController : MonoBehaviour
 		}
 	}
 
-
+	public void AddListenerOnWindowSlideEvent(Action listener)
+	{
+		OnWindowSlideHandler += listener;
+	}
+	public void RempveListenerOnWindowSlideEvent(Action listener)
+	{
+		OnWindowSlideHandler -= listener;
+	}
 }
