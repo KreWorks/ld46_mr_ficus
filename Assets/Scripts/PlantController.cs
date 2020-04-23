@@ -15,6 +15,8 @@ public class PlantController : MonoBehaviour
 	public UiController uiController;
 	public WindowsController window;
 
+	public ParticleSystem sparkle;
+
 	public PlantState plantState;
 
 	public DeadPlantState deadState;
@@ -270,6 +272,7 @@ public class PlantController : MonoBehaviour
 		if(waterLevel < 100)
 		{
 			waterLevel += 3;
+			sparkle.Play();
 		}
 	}
 
